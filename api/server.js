@@ -6,11 +6,18 @@ const cors = require("cors");
 
 const app = express();
 
+// config cors
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
 //cookies
 app.use(cookieParser())
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // mongodb conexion
 mongoose
@@ -23,7 +30,7 @@ const authRoutes = require("./routes/authRoutes")
 app.use("/api/auth", authRoutes)
 
 // route test
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("Bienvenue sur notre API d'authentification !")
 });
 
