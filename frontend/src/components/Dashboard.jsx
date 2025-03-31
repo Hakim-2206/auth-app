@@ -18,18 +18,22 @@ const Dashboard = () => {
 
 
     return (
-        <div>
-            <h1>Dashboard</h1>
-            {user ? (
-                <>
-                    <p>Welcome to your dashboard, {user.name}</p>
-                    <p>Email: {user.email}</p>
-                </>
-            ) : (
-                <p>Chargement...</p>
-            )}
-
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
+                <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">Tableau de bord</h1>
+                {user ? (
+                    <div className="space-y-4">
+                        <p className="text-lg text-gray-700 text-center">
+                            Bienvenue sur votre tableau de bord, <span className="font-semibold">{user.name}</span> !
+                        </p>
+                        <p className="text-sm text-gray-500 text-center">Email : {user.email}</p>
+                    </div>
+                ) : (
+                    <p className="text-center text-gray-500">Chargement...</p>
+                )}
+            </div>
         </div>
+
     );
 }
 
