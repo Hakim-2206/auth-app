@@ -26,8 +26,10 @@ mongoose
     .catch((err) => console.log("Erreur MongoDB:", err))
 
 const authRoutes = require("./routes/authRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 app.use("/api/auth", authRoutes)
+app.use("/api/profile", userRoutes)
 
 // route test
 app.get("/", (req, res) => {

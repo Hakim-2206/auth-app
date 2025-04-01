@@ -13,7 +13,6 @@ const Login = () => {
         e.preventDefault()
         try {
             await login(email, password);
-            toast.success("Connexion réussie")
         } catch (err) {
             console.error(err.message)
             toast.error(err.message)
@@ -22,7 +21,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user && !isLoading) {
-            navigate("/dashboard")
+            navigate("/")
         }
     }, [user, isLoading, navigate]);
 

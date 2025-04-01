@@ -45,14 +45,14 @@ const Navbar = () => {
                                         : "text-gray-600 hover:text-gray-800"
                                 } transition duration-300`}
                             >
-                                Tableau de bord
+                                Dashboard
                             </Link>
-                            <button
+                            <div
                                 onClick={handleLogout}
-                                className="bg-red-400/80 hover:bg-red-500 text-white px-4 py-2 rounded-md transition duration-300"
+                                className="hover:bg-gray-100 hover:text-red-500 cursor-pointer text-red-400 px-4 py-2 rounded-md transition duration-300"
                             >
                                 Déconnexion
-                            </button>
+                            </div>
                         </>
                     ) : (
                         <>
@@ -60,9 +60,9 @@ const Navbar = () => {
                                 to="/login"
                                 className={`${
                                     location.pathname === "/login"
-                                        ? "text-blue-600"
-                                        : "text-gray-600 hover:text-gray-800"
-                                } transition duration-300`}
+                                        ? " bg-blue-400 hover:bg-blue-500 text-white"
+                                        : "hover:bg-gray-400 text-black"
+                                } px-4 py-2 rounded-md transition duration-300`}
                             >
                                 Connexion
                             </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
                                 className={`${
                                     location.pathname === "/register"
                                         ? "bg-blue-400 hover:bg-blue-500 text-white"
-                                        : "bg-gray-300 hover:bg-gray-400 text-black"
+                                        : "hover:bg-gray-400 text-black"
                                 } px-4 py-2 rounded-md transition duration-300`}
                             >
                                 Inscription

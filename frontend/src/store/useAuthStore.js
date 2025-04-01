@@ -69,4 +69,38 @@ export const useAuthStore = create((set) => ({
         });
         set({user: null})
     },
+    updateProfile: async (name, email, newPassword) => {
+        set({error: null});
+        try {
+            const res = await fetch(`${API_URL}/profile/me`, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({name, email, newPassword}),
+                credentials: "include",
+            });
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.message);
+
+            set({user: data.user});
+        } catch (e) {
+            set({error: e.message})
+        }
+    },
+    deleteProfile: async () => {
+        try {
+            const res = await fetch(`${API_URL}/profile/me`, {
+                method: "DELETE",
+                credentials: "include",
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.message);
+
+            set({user: null})
+        } catch (e) {
+            set({error: e.message})
+        }
+    }
 }))
