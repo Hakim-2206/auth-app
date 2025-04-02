@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-            sameSite: "Strict" // protect against CSRF attacks
+            sameSite: "None"
         });
 
         res.json({
@@ -78,7 +78,7 @@ exports.logout = (req, res) => {
         res.clearCookie("token", {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "Strict"
+            sameSite: "None"
         });
 
         res.json({message: "Déconnexion réussie !"});
